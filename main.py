@@ -15,15 +15,15 @@ class Checker:
         self.to_check = usernames
 
     async def _check(self, session: aiohttp.ClientSession, username: str) -> None:
-        async with session.head(f'https://www.tiktok.com/@{username}') as response:
+        async with session.head(f'https://xboxgamertag.com/search/{username}') as response:
             if response.status == 200 and len(username) > 2:
                 print(
-                    '%s[UNAVAILABLE] https://www.tiktok.com/@%s%s'
+                    '%s[UNAVAILABLE] https://xboxgamertag.com/search//%s%s'
                     % ('\u001b[31;1m', username, '\u001b[0m')
                 )
             else:
                 print(
-                    '%s[AVAILABLE] https://www.tiktok.com/@%s%s'
+                    '%s[AVAILABLE] https://xboxgamertag.com/search/s%s'
                     % ('\u001b[32;1m', username, '\u001b[0m')
                 )
                 write_file(username)
